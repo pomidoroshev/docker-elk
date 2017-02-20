@@ -10,6 +10,8 @@ services:
       ES_JAVA_OPTS: "-Xms1g -Xmx1g"
     networks:
       - docker_elk
+    volumes:
+      - elasticsearch:/usr/share/elasticsearch/data
   logstash:
     build: logstash/
     command: -f /etc/logstash/conf.d/
@@ -44,3 +46,6 @@ services:
 networks:
   docker_elk:
     driver: bridge
+
+volumes:
+  elasticsearch:
